@@ -3,6 +3,10 @@ h1 {
   font-family: 'Roboto', sans-serif;
 }
 
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
 .navbar {
   margin-bottom: 0;
 }
@@ -25,6 +29,10 @@ h1 {
   border-radius: 25px;
   padding: 20px;
   margin-bottom: 50px;
+}
+
+.user {
+  font-weight: bold;
 }
 
 .btn {

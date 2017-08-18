@@ -87,9 +87,10 @@
 
   <script>
 
+  //tweets div
   var tweetsDiv = document.querySelector(".tweets");
 
-  <!-- Load JSON file -->
+  //Load JSON file
   var requestURL = 'data/class2Tweets.json';
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
@@ -102,49 +103,54 @@
     loadTweets(class2Tweets);
     }
 
-    loadTweets = function (jsonObj)
+  //creates div and some elements for each tweet
+  loadTweets = function (jsonObj)
+  {
+    var userName;
+    var tweet;
+    var tweetDate;
+
+    for(i in jsonObj)
     {
-      var userName;
-      var tweet;
-      var tweetDate;
+      userName = jsonObj[i].user.name;
+      tweet = jsonObj[i].text;
+      tweetDate = jsonObj[i].created_at;
 
-      for(i in jsonObj)
-      {
-        userName = jsonObj[i].user.name;
-        tweet = jsonObj[i].text;
-        tweetDate = jsonObj[i].created_at;
+      var aDiv = document.createElement("div");
+      aDiv.className = "tweet";
 
-        var aDiv = document.createElement("div");
-        aDiv.className = "tweet";
+      var p1 = document.createElement("p");
+      p1.className = "user"
 
-        var p1 = document.createElement("p");
-        var p2 = document.createElement("p");
-        var p3 = document.createElement("p");
-        p1.textContent = userName;
-        p2.textContent = tweet;
-        p3.textContent = tweetDate;
+      var p2 = document.createElement("p");
 
-        var b1 = document.createElement("button");
-        var t1 = document.createTextNode("+2");
-        var b2 = document.createElement("button");
-        var t2 = document.createTextNode("+1");
-        var b3 = document.createElement("button");
-        var t3 = document.createTextNode("-1");
-        b1.appendChild(t1);
-        b2.appendChild(t2);
-        b3.appendChild(t3);
-        b1.className = "btn success";
-        b2.className = "btn info";
-        b3.className = "btn danger";
+      var p3 = document.createElement("p");
 
-        aDiv.appendChild(p1);
-        aDiv.appendChild(p2);
-        aDiv.appendChild(p3);
-        aDiv.appendChild(b1);
-        aDiv.appendChild(b2);
-        aDiv.appendChild(b3);
+      p1.textContent = userName;
+      p2.textContent = tweet;
+      p3.textContent = "Posted in " + tweetDate;
 
-        tweetsDiv.appendChild(aDiv);
+      var b1 = document.createElement("button");
+      var t1 = document.createTextNode("+2");
+      var b2 = document.createElement("button");
+      var t2 = document.createTextNode("+1");
+      var b3 = document.createElement("button");
+      var t3 = document.createTextNode("-1");
+      b1.appendChild(t1);
+      b2.appendChild(t2);
+      b3.appendChild(t3);
+      b1.className = "btn success";
+      b2.className = "btn info";
+      b3.className = "btn danger";
+
+      aDiv.appendChild(p1);
+      aDiv.appendChild(p2);
+      aDiv.appendChild(p3);
+      aDiv.appendChild(b1);
+      aDiv.appendChild(b2);
+      aDiv.appendChild(b3);
+
+      tweetsDiv.appendChild(aDiv);
     }
   }
 
