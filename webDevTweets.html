@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <title>WebDev uniandes tweets</title>
+  <meta charset="utf-8">
+
+  <!-- To ensure proper rendering and touching zooming in mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Title font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link href="css/webDevTweets.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-tweets">
+            <span class="sr-only">Show / Hide Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">WebDev Uniandes tweets</a>
+        </div>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="navigation-tweets">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                Tweets <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="active"><a href="#">HTML tweets</a></li>
+                <li><a href="#">CSS tweets</a></li>
+                <li><a href="#">Bootstrap tweets</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+
+          <form action="" class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Jumbotron -->
+  <section class="jumbotron">
+    <div class="container">
+      <h1>WebDev Uniandes course tweets</h1>
+      <p>Tweets written by WebDev studens at Universidad de los Andes</p>
+    </div>
+  </section>
+
+  <!-- Tweets section -->
+  <section class="main container">
+    <div class="tweets">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    Website developed by japoveda10
+  </footer>
+
+  <script>
+
+  var tweetsDiv = document.querySelector(".tweets");
+
+  <!-- Load JSON file -->
+  var requestURL = 'data/class2Tweets.json';
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+
+  request.responseType = 'json';
+  request.send();
+
+  request.onload = function() {
+    var class2Tweets = request.response;
+    loadTweets(class2Tweets);
+    }
+
+    loadTweets = function (jsonObj)
+    {
+      var userName;
+      var tweet;
+      var tweetDate;
+
+      for(i in jsonObj)
+      {
+        userName = jsonObj[i].user.name;
+        tweet = jsonObj[i].text;
+        tweetDate = jsonObj[i].created_at;
+
+        var aDiv = document.createElement("div");
+        aDiv.className = "tweet";
+
+        var p1 = document.createElement("p");
+        var p2 = document.createElement("p");
+        var p3 = document.createElement("p");
+        p1.textContent = userName;
+        p2.textContent = tweet;
+        p3.textContent = tweetDate;
+
+        var b1 = document.createElement("button");
+        var t1 = document.createTextNode("+2");
+        var b2 = document.createElement("button");
+        var t2 = document.createTextNode("+1");
+        var b3 = document.createElement("button");
+        var t3 = document.createTextNode("-1");
+        b1.appendChild(t1);
+        b2.appendChild(t2);
+        b3.appendChild(t3);
+        b1.className = "btn success";
+        b2.className = "btn info";
+        b3.className = "btn danger";
+
+        aDiv.appendChild(p1);
+        aDiv.appendChild(p2);
+        aDiv.appendChild(p3);
+        aDiv.appendChild(b1);
+        aDiv.appendChild(b2);
+        aDiv.appendChild(b3);
+
+        tweetsDiv.appendChild(aDiv);
+    }
+  }
+
+  </script>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

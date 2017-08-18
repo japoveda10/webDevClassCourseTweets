@@ -1,0 +1,53 @@
+h1 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.tweets {
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.tweet {
+  border:1px solid black;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+.success {background-color: #4CAF50;}
+.success:hover {background-color: #46a049;}
+
+.info {background-color: #2196F3;}
+.info:hover {background: #0b7dda;}
+
+.danger {background-color: #f44336;}
+.danger:hover {background: #da190b;}
+
+#updateBtn {
+  float: right;
+}
+
+#footer {
+  text-align: center;
+  background-color: #eee;
+  padding: 10px;
+}
