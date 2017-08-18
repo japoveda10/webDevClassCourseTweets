@@ -115,7 +115,7 @@
         tweetDate = jsonObj[i].created_at;
 
         var aDiv = document.createElement("div");
-        aDiv.className = "tweet";
+        aDiv.className = "tweet rounded";
 
         var p1 = document.createElement("p");
         var p2 = document.createElement("p");
@@ -133,9 +133,9 @@
         b1.appendChild(t1);
         b2.appendChild(t2);
         b3.appendChild(t3);
-        b1.className = "btn success rounded";
-        b2.className = "btn info rounded";
-        b3.className = "btn danger rounded";
+        b1.className = "btn success";
+        b2.className = "btn info";
+        b3.className = "btn danger";
 
         aDiv.appendChild(p1);
         aDiv.appendChild(p2);
