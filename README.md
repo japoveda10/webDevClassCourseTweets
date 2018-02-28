@@ -2,7 +2,7 @@
 
 ![webDevCourseTweets][image1]
 
-[image1]: https://github.com/japoveda10/WebDev/blob/master/webDevCourseTweets/images/webDevCourseTweetsProject.png
+[image1]: https://raw.githubusercontent.com/japoveda10/webDevCourseTweets/master/data/homepage.png
 
 ## What is it?
 
